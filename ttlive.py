@@ -130,6 +130,7 @@ def api_live():
 
 threading.Thread(target=monitor, daemon=True).start()
 
-app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+app.run(port=5000)
+
 
 
