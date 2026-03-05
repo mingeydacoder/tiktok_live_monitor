@@ -1,5 +1,6 @@
 import requests
 import re
+import os
 import time
 import threading
 from datetime import datetime
@@ -129,5 +130,6 @@ def api_live():
 
 threading.Thread(target=monitor, daemon=True).start()
 
-app.run(port=5000)
+app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 
