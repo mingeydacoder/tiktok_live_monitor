@@ -104,7 +104,7 @@ def monitor():
 
                 # 終端機輸出
                 icon = "🔴" if live else "⚫"
-                print(f"[{now}] {username} {icon} {'LIVE' if live else 'OFFLINE'}")
+                print(f"[{now}] {username} {icon} {'LIVE' if live else 'OFFLINE'}, flush=True")
 
                 # Discord 通知只在狀態改變時發送
                 if username not in last_status:
@@ -130,7 +130,8 @@ def api_live():
 
 threading.Thread(target=monitor, daemon=True).start()
 
-app.run(port=5000)
+app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 
 
 
